@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zoe's</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+    <section class="box" id="box">
+        <img src="./images/background.png" alt="" class="background">
+        <img src="./images/sun.png" alt="" class="sun">
+        <img src="./images/mountain1.png" alt="" class="mountain1">
+        <img src="./images/mountain2.png" alt="" class="mountain2">
+        <img src="./images/ear.png" alt="" class="ear">
+        <img src="./images/elevator.png" alt="" class="elevator">
+        <img src="./images/hand.png" alt="" class="hand">
+        <img src="./images/monster1.png" alt="" class="monster1">
+        <img src="./images/monster2.png" alt="" class="monster2">
+        <img src="./images/monster3.png" alt="" class="monster3">
+        <img src="./images/people.png" alt="" class="people" style="transform: scale(0.2);">
+        <img src="./images/text1.png" alt="" class="text1" style="left: 130%">
+        <img src="./images/text2.png" alt="" class="text2" style="left: -198%">
+        <img src="./images/lateral.png" alt="" class="lateral" style="left: 130%">
+    </section>
+
+    <script type="text/javascript">
+        var box = document.getElementById('box');
+        var value = 0; //定义全局变量记录鼠标滚轮总滚动量
+        var people_top = -26;
+        var sun_top = -32;
+        var sun_right = -53;
+
+        const background = document.querySelector('.background');
+        const sun = document.querySelector('.sun');
+        const mountain1 = document.querySelector('.mountain1');
+        const mountain2 = document.querySelector('.mountain2');
+        const ear = document.querySelector('.ear');
+        const elevator = document.querySelector('.elevator');
+        const hand = document.querySelector('.hand');
+        const people = document.querySelector('.people');
+        const monster1 = document.querySelector('.monster1');
+        const monster2 = document.querySelector('.monster2');
+        const monster3 = document.querySelector('.monster3');
+        const text1 = document.querySelector('.text1');
+        const text2 = document.querySelector('.text2');
+        const lateral = document.querySelector('.lateral');
+
+        function onMouseWheel(ev) {
+            var ev = ev || window.event;
+            var temp = ev.wheelDelta ? ev.wheelDelta / (-Math.abs(ev.wheelDelta)) : ev.detail / (Math.abs(ev.detail)); //记录鼠标单次滚动方向
+            value += temp //改变总滚动量
+            // console.log(temp);
+
+            if (value < 33) {
+                sun_right += 2 * temp;
+                sun.style.right = sun_right + '%';
+                sun_top += temp;
+                sun.style.top = sun_top + '%';
+
+                // monsters' movement
+                monster1.style.top = 4 * Math.sin(value / 2) + '%';
+                monster2.style.top = 3 * Math.cos(value / 2) + '%';
+                monster3.style.top = 2 * Math.sin(value / 2) + '%';
+                ear.style.top = 6 * Math.cos(value / 2) + '%';
+                hand.style.top = 4 * Math.sin(value / 2) + '%';
+
+                // people's movement
+                let people_scale = Number.parseFloat(people.style.transform.replace('scale(', ''));
+                people_scale += temp * 0.0185;
+                people.style.transform = 'scale(' + people_scale + ')';
+                people_top += temp * 1.13;
+                people.style.top = people_top + '%';
+
+                // texts' movement
+                text1.style.left = (Number.parseFloat(text1.style.left.replace('%', '')) - temp * 7) + '%';
+                text2.style.left = (Number.parseFloat(text2.style.left.replace('%', '')) + temp * 8) + '%';
+            }
+
+            if(value > 31 && value < 42 ){
+                lateral.style.left = (Number.parseFloat(lateral.style.left.replace('%', '')) - temp * 13) + '%';
+            }
+
+            console.log(value);
+            if (value == 43) {
+                window.location.href="./main.html";
+            }
+
+        }
+
+        function addEvent(obj, xEvent, fn) {
+            if (obj.attachEvent) {
+                obj.attachEvent('on' + xEvent, fn);
+            } else {
+                obj.addEventListener(xEvent, fn, false);
+            }
+        }
+
+        addEvent(box, 'mousewheel', onMouseWheel);
+        addEvent(box, 'DOMMouseScroll', onMouseWheel);
+    
+    </script>
+
+</body>
+
+</html>

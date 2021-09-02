@@ -1,0 +1,29 @@
+body{
+    background-image: url(assets/back.png);
+    background-size: contain;
+    background-color: black;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.logo{
+    margin-top: 25rem;
+    margin-left: 59rem;
+}
+
+
+img{
+    width: 80px;
+    height: 80px;
+}
+
+.weibo{
+    margin-left: -0.5rem;
+}
+
+.mail{
+    font-family: amatic;
+    font-size: 50px; 
+    font-weight: 500;
+}

@@ -1,0 +1,111 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+html, body {
+    height: 100%;
+    background-color: black;
+    scroll-behavior: smooth;
+}
+
+body {
+    padding: 0;
+    margin: 0;
+}
+
+section {
+    position: relative;
+    height: 100%;
+    overflow: hidden;
+    color: rgb(252, 250, 250);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+section img {
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 0 auto;
+    right: 0;
+    object-fit: cover;
+    pointer-events: none;
+}
+
+.background {
+    z-index: 1;
+}
+
+.ear {
+    z-index: 7;
+}
+
+.elevator {
+    z-index: 11;
+}
+
+.hand {
+    z-index: 6;
+}
+
+.monster1 {
+    z-index: 4;
+}
+
+.monster2 {
+    z-index: 5;
+}
+
+.monster3 {
+    z-index: 9;
+}
+
+.mountain1 {
+    z-index: 3;
+}
+
+.mountain2 {
+    z-index: 8;
+}
+
+.people {
+    z-index: 12;
+    transform: scale(0.2);
+    right: -53%;
+    top: -26%;
+}
+
+.sun {
+    z-index: 2;
+    transform: scale(0.33);
+    right: -53%;
+    top: -32%;
+}
+
+.text1 {
+    z-index: 10;
+    top: -4rem;
+}
+
+.text2 {
+    z-index: 13;
+    top: 1rem;
+}
+
+.lateral{
+    z-index: 14;
+    scale: 0.3;
+    /* left: 50%;
+    transition: all 1s;
+    -moz-transition: all 1s;
+    -webkit-transition: all 1s;
+    -o-transition:all 1s; */
+}
+
+/* .lateral:hover{
+    z-index: 14;
+    right: 0%;
+} */
