@@ -54,8 +54,11 @@
             var temp = ev.wheelDelta ? ev.wheelDelta / (-Math.abs(ev.wheelDelta)) : ev.detail / (Math.abs(ev.detail)); //记录鼠标单次滚动方向
             value += temp //改变总滚动量
             // console.log(temp);
+            if (value < 0){
+                value = 0
+            }
 
-            if (value < 33) {
+            if (value > 0 && value < 33) {
                 sun_right += 2 * temp;
                 sun.style.right = sun_right + '%';
                 sun_top += temp;
